@@ -1,0 +1,147 @@
+*********************************************************************
+Using schemas from appending-new-field
+*********************************************************************
+
+===================================================================
+Unusual option 1:
+Use the v1 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Unusual option 2:
+Use the v2 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (java.io.EOFException)
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222, "myBiscuit": "hobnob"}
+
+===================================================================
+Unusual option 3:
+Use the v1 schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111, "myBiscuit": "rich tea"}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222, "myBiscuit": "rich tea"}
+
+===================================================================
+Unusual option 4:
+Use the v2 schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (java.io.EOFException)
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 1:
+Use the correct schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 2:
+Use the correct schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111, "myBiscuit": "rich tea"}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222, "myBiscuit": "hobnob"}
+
+===================================================================
+
+
+
+*********************************************************************
+Using schemas from prepending-new-field
+*********************************************************************
+
+===================================================================
+Unusual option 1:
+Use the v1 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "hobnob", "myFloat": 1.755433E25, "myInt": -58}
+
+===================================================================
+Unusual option 2:
+Use the v2 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (org.apache.avro.AvroRuntimeException)
+{"myBiscuit": "hobnob", "myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Unusual option 3:
+Use the v1 schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myBiscuit": "rich tea", "myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myBiscuit": "rich tea", "myMessage": "hobnob", "myFloat": 1.755433E25, "myInt": -58}
+
+===================================================================
+Unusual option 4:
+Use the v2 schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (org.apache.avro.AvroRuntimeException)
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 1:
+Use the correct schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 2:
+Use the correct schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myBiscuit": "rich tea", "myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myBiscuit": "hobnob", "myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+
+
+
+*********************************************************************
+Using schemas from inserting-new-field
+*********************************************************************
+
+===================================================================
+Unusual option 1:
+Use the v1 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 6}
+
+===================================================================
+Unusual option 2:
+Use the v2 schema (for both reader and writer) for both messages
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (java.io.EOFException)
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myBiscuit": "hobnob", "myInt": 222}
+
+===================================================================
+Unusual option 3:
+Use the v1 schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myBiscuit": "rich tea", "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myBiscuit": "rich tea", "myInt": 6}
+
+===================================================================
+Unusual option 4:
+Use the v2 schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+UNABLE TO DESERIALIZE (java.io.EOFException)
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 1:
+Use the correct schema for writer, and v1 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+===================================================================
+Correct option 2:
+Use the correct schema for writer, and v2 schema for reader
+-------------------------------------------------------------------
+{"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myBiscuit": "rich tea", "myInt": 111}
+{"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myBiscuit": "hobnob", "myInt": 222}
+
+===================================================================

@@ -1,0 +1,14 @@
+Sending to DEMO.APPENDING
+    {"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+Sending to DEMO.APPENDING
+    {"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222, "myBiscuit": "hobnob"}
+
+Sending to DEMO.PREPENDING
+    {"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+Sending to DEMO.PREPENDING
+    {"myBiscuit": "hobnob", "myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myInt": 222}
+
+Sending to DEMO.INSERTING
+    {"myMessage": "This is message one, produced using the v1 schema", "myFloat": 1.1, "myInt": 111}
+Sending to DEMO.INSERTING
+    {"myMessage": "This is message two, produced using the v2 schema", "myFloat": 2.2, "myBiscuit": "hobnob", "myInt": 222}

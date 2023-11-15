@@ -1,0 +1,24 @@
+{
+    "namespace": "dalelane.demo",
+    "type": "record",
+    "name": "Demo",
+    "fields": [
+        {
+            "name": "myBiscuit",
+            "type": "string",
+            "default": "rich tea"
+        },
+        {
+            "name": "myMessage",
+            "type": "string"
+        },
+        {
+            "name": "myFloat",
+            "type": "float"
+        },
+        {
+            "name": "myInt",
+            "type": "int"
+        }
+    ]
+}
